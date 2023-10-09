@@ -110,16 +110,6 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
-/***/ "./src/services/api-caller.js":
-/*!************************************!*\
-  !*** ./src/services/api-caller.js ***!
-  \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _pub_sub__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pub-sub */ \"./src/services/pub-sub.js\");\n\r\n\r\n(0,_pub_sub__WEBPACK_IMPORTED_MODULE_0__.subscribe)(\"makeApiCall\", makeApiCall);\r\n\r\nasync function makeApiCall(cityName) {\r\n  const key = \"0b3eed6dfdae45bcbad10452232309\"\r\n  const url = `https://api.weatherapi.com/v1/current.json?KEY=${key}&q=${cityName}}`\r\n  const response = await fetch(url)\r\n  const json = await response.json()\r\n  console.log(json)\r\n}\n\n//# sourceURL=webpack://weather-app/./src/services/api-caller.js?");
-
-/***/ }),
-
 /***/ "./src/services/pub-sub.js":
 /*!*********************************!*\
   !*** ./src/services/pub-sub.js ***!
@@ -130,13 +120,23 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/services/weather-api-caller.js":
+/*!********************************************!*\
+  !*** ./src/services/weather-api-caller.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _pub_sub__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pub-sub */ \"./src/services/pub-sub.js\");\n\r\n\r\n(0,_pub_sub__WEBPACK_IMPORTED_MODULE_0__.subscribe)(\"makeWeatherApiCall\", makeWeatherApiCall);\r\n\r\nasync function makeApiCall(cityName) {\r\n  const key = \"0b3eed6dfdae45bcbad10452232309\"\r\n  const url = `https://api.weatherapi.com/v1/current.json?KEY=${key}&q=${cityName}}`\r\n  const response = await fetch(url, {mode: 'cors'})\r\n\r\n  if (!response.ok) {\r\n    throw new Error(\"City Not Found\")\r\n  }\r\n\r\n  return response.json();\r\n}\r\n\r\nfunction makeWeatherApiCall(cityName) {\r\n  makeApiCall(cityName).then(console.log).catch(() => {console.log(\"error\")})\r\n}\n\n//# sourceURL=webpack://weather-app/./src/services/weather-api-caller.js?");
+
+/***/ }),
+
 /***/ "./src/view/search-city-view.js":
 /*!**************************************!*\
   !*** ./src/view/search-city-view.js ***!
   \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../styles.css */ \"./src/styles.css\");\n/* harmony import */ var _services_pub_sub_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/pub-sub.js */ \"./src/services/pub-sub.js\");\n/* harmony import */ var _services_api_caller__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../services/api-caller */ \"./src/services/api-caller.js\");\n\r\n\r\n\r\n\r\nconst searchButton = document.querySelector(\".search-button\");\r\nconst cityInput = document.getElementById(\"city-input\");\r\n\r\ncityInput.addEventListener(\"keyup\", makeApiCallOnEnter);\r\nsearchButton.addEventListener(\"click\", makeApiCall);\r\n\r\nfunction makeApiCallOnEnter(event) {\r\n  const keyPressed = event.key;\r\n  if (keyPressed === \"Enter\") {\r\n    makeApiCall();\r\n  }\r\n}\r\n\r\nfunction makeApiCall() {\r\n  const cityName = cityInput.value;\r\n  if (cityName.length !== 0) {\r\n    (0,_services_pub_sub_js__WEBPACK_IMPORTED_MODULE_1__.emit)(\"makeApiCall\", cityName)\r\n  }\r\n}\n\n//# sourceURL=webpack://weather-app/./src/view/search-city-view.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../styles.css */ \"./src/styles.css\");\n/* harmony import */ var _services_pub_sub_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/pub-sub.js */ \"./src/services/pub-sub.js\");\n/* harmony import */ var _services_weather_api_caller__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/weather-api-caller */ \"./src/services/weather-api-caller.js\");\n\r\n\r\n\r\n\r\nconst searchButton = document.querySelector(\".search-button\");\r\nconst cityInput = document.getElementById(\"city-input\");\r\n\r\ncityInput.addEventListener(\"keyup\", makeApiCallOnEnter);\r\nsearchButton.addEventListener(\"click\", makeApiCall);\r\n\r\nfunction makeApiCallOnEnter(event) {\r\n  const keyPressed = event.key;\r\n  if (keyPressed === \"Enter\") {\r\n    makeApiCall();\r\n  }\r\n}\r\n\r\nfunction makeApiCall() {\r\n  const cityName = cityInput.value;\r\n  if (cityName.length !== 0) {\r\n    (0,_services_pub_sub_js__WEBPACK_IMPORTED_MODULE_1__.emit)(\"makeWeatherApiCall\", cityName)\r\n  }\r\n}\n\n//# sourceURL=webpack://weather-app/./src/view/search-city-view.js?");
 
 /***/ })
 
