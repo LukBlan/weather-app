@@ -1,3 +1,56 @@
-html, body {
-  background-color: red;
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: min-content 1fr;
+}
+
+nav {
+  background-color: #1C1627;
+  grid-row: 1 / 1;
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+}
+
+.search-city-bar {
+  padding: 10px;
+  display: flex;
+}
+
+#search-city-input {
+  appearance: none;
+  border-radius: 5px 0 0 5px;
+  padding: 5px;
+  border: 2px solid white;
+  transition: 0.3s border-color;
+}
+
+#search-city-input:focus {
+  outline: none;
+  border-color: blueviolet;
+}
+
+.search-city-button {
+  background-color: #ee3330;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  font-size: 0.7rem;
+  padding: 5px 7px;
+  color: white;
+  border-radius: 0 5px 5px 0;
+}
+
+.search-city-button:hover {
+  background-color: #cd2b28;
+}
+
+section {
+  background-color: #ddd;
 }
