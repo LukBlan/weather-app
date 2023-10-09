@@ -1,4 +1,6 @@
 import css from "./../styles.css";
+import {emit, subscribe} from "../services/pub-sub.js";
+import {} from "./../services/api-caller"
 
 const searchButton = document.querySelector(".search-button");
 const cityInput = document.getElementById("city-input");
@@ -16,6 +18,6 @@ function makeApiCallOnEnter(event) {
 function makeApiCall() {
   const cityName = cityInput.value;
   if (cityName.length !== 0) {
-    console.log(cityName);
+    emit("makeApiCall", cityName)
   }
 }

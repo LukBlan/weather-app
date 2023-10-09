@@ -7,7 +7,7 @@ function subscribe(eventName, handler) {
     events[eventName] = [];
   }
 
-  events[eventName].append(handler);
+  events[eventName].push(handler);
 }
 
 function emit(eventName, data) {
