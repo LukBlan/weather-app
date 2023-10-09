@@ -110,13 +110,13 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
+/***/ "./src/view/search-city-view.js":
+/*!**************************************!*\
+  !*** ./src/view/search-city-view.js ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n\n\n//# sourceURL=webpack://weather-app/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../styles.css */ \"./src/styles.css\");\n\r\n\r\nconst searchButton = document.querySelector(\".search-button\");\r\nconst cityInput = document.getElementById(\"city-input\");\r\n\r\ncityInput.addEventListener(\"keyup\", makeApiCallOnEnter);\r\nsearchButton.addEventListener(\"click\", makeApiCall);\r\n\r\nfunction makeApiCallOnEnter(event) {\r\n  const keyPressed = event.key;\r\n  if (keyPressed === \"Enter\") {\r\n    makeApiCall();\r\n  }\r\n}\r\n\r\nfunction makeApiCall() {\r\n  const cityName = cityInput.value;\r\n  if (cityName.length !== 0) {\r\n    console.log(cityName);\r\n  }\r\n}\n\n//# sourceURL=webpack://weather-app/./src/view/search-city-view.js?");
 
 /***/ })
 
@@ -197,7 +197,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/view/search-city-view.js");
 /******/ 	
 /******/ })()
 ;
