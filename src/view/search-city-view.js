@@ -1,6 +1,7 @@
 import css from "./../styles.css";
 import {emit, subscribe} from "../services/pub-sub.js";
-import {} from "../services/weather-api-caller"
+import {} from "../services/weather-api-caller.js"
+import {} from "./city-view.js"
 
 const searchButton = document.querySelector(".search-button");
 const cityInput = document.getElementById("city-input");

@@ -1,4 +1,4 @@
-import {subscribe} from "./pub-sub";
+import {emit, subscribe} from "./pub-sub";
 
 subscribe("makeWeatherApiCall", makeWeatherApiCall);
 
@@ -15,5 +15,9 @@ async function makeApiCall(cityName) {
 }
 
 function makeWeatherApiCall(cityName) {
-  makeApiCall(cityName).then(console.log).catch(() => {console.log("error")})
+  makeApiCall(cityName).then(sendNewCityInfo).catch(() => {console.log("error")})
+}
+
+function sendNewCityInfo(cityObject) {
+  emit("newWeatherInfo", cityObject)
 }
