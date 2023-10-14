@@ -1,17 +1,17 @@
-import {LoadingAnimation} from "../services/loading-animation.js";
+import {Loader} from "../loader/loader.js";
 import {subscribe} from "../services/pub-sub";
 
-const cityViewSection = document.querySelector("section");
-const loadingAnimation = new LoadingAnimation(cityViewSection);
+const cityViewSection = document.querySelector(".city-view");
+const loader = new Loader(cityViewSection);
 
 subscribe("makeWeatherApiCall", showLoaderOnScreen);
 subscribe("newWeatherInfo", processNewWeatherInfo);
 
 function processNewWeatherInfo(newWeatherInfo) {
-  loadingAnimation.getOutScreen();
+  loader.getOutScreen();
   console.log(newWeatherInfo);
 }
 
 function showLoaderOnScreen() {
-  loadingAnimation.showInScreen();
+  loader.showInScreen();
 }

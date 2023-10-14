@@ -1,7 +1,5 @@
-import css from "./../styles.css";
-import {emit, subscribe} from "../services/pub-sub.js";
-import {} from "../services/weather-api-caller.js"
-import {} from "./city-view.js"
+export {makeApiCall}
+import {emit} from "../services/pub-sub.js";
 
 const searchButton = document.querySelector(".search-button");
 const cityInput = document.getElementById("city-input");
@@ -16,8 +14,8 @@ function makeApiCallOnEnter(event) {
   }
 }
 
-function makeApiCall() {
-  const cityName = cityInput.value;
+function makeApiCall(newCity) {
+  const cityName = newCity || cityInput.value;
   if (cityName.length !== 0) {
     emit("makeWeatherApiCall", cityName)
   }

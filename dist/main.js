@@ -110,13 +110,33 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
-/***/ "./src/services/loading-animation.js":
-/*!*******************************************!*\
-  !*** ./src/services/loading-animation.js ***!
-  \*******************************************/
+/***/ "./src/app.js":
+/*!********************!*\
+  !*** ./src/app.js ***!
+  \********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   LoadingAnimation: () => (/* binding */ LoadingAnimation)\n/* harmony export */ });\n\r\n\r\nclass LoadingAnimation {\r\n  constructor(parentElement) {\r\n    this.parentElement = parentElement;\r\n    this.loader = document.querySelector(\".loader\");\r\n  }\r\n\r\n  showInScreen() {\r\n    this.parentElement.append(this.loader);\r\n  }\r\n\r\n  getOutScreen() {\r\n    this.parentElement.remove(this.loader);\r\n  }\r\n}\n\n//# sourceURL=webpack://weather-app/./src/services/loading-animation.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _view_search_city_view__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./view/search-city-view */ \"./src/view/search-city-view.js\");\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n/* harmony import */ var _services_weather_api_caller_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./services/weather-api-caller.js */ \"./src/services/weather-api-caller.js\");\n/* harmony import */ var _view_city_view_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./view/city-view.js */ \"./src/view/city-view.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n(0,_view_search_city_view__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)(\"London\");\n\n//# sourceURL=webpack://weather-app/./src/app.js?");
+
+/***/ }),
+
+/***/ "./src/loader/loader-factory.js":
+/*!**************************************!*\
+  !*** ./src/loader/loader-factory.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   createLoader: () => (/* binding */ createLoader)\n/* harmony export */ });\n\r\n\r\nfunction createLoader() {\r\n  const loader = document.createElement(\"div\");\r\n  loader.classList.add(\"loader\");\r\n  return loader;\r\n}\n\n//# sourceURL=webpack://weather-app/./src/loader/loader-factory.js?");
+
+/***/ }),
+
+/***/ "./src/loader/loader.js":
+/*!******************************!*\
+  !*** ./src/loader/loader.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   Loader: () => (/* binding */ Loader)\n/* harmony export */ });\n/* harmony import */ var _loader_factory_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./loader-factory.js */ \"./src/loader/loader-factory.js\");\n\r\n;\r\n\r\nclass Loader {\r\n  constructor(parentElement) {\r\n    this.parentElement = parentElement;\r\n    this.loader = (0,_loader_factory_js__WEBPACK_IMPORTED_MODULE_0__.createLoader)();\r\n  }\r\n\r\n  showInScreen() {\r\n    console.log(this.parentElement)\r\n    console.log(this.loader)\r\n    this.parentElement.append(this.loader);\r\n  }\r\n\r\n  getOutScreen() {\r\n    this.parentElement.removeChild(this.loader);\r\n  }\r\n}\n\n//# sourceURL=webpack://weather-app/./src/loader/loader.js?");
 
 /***/ }),
 
@@ -146,7 +166,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _pub
   \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _services_loading_animation_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/loading-animation.js */ \"./src/services/loading-animation.js\");\n/* harmony import */ var _services_pub_sub__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/pub-sub */ \"./src/services/pub-sub.js\");\n\r\n\r\n\r\nconst cityViewSection = document.querySelector(\"section\");\r\nconst loadingAnimation = new _services_loading_animation_js__WEBPACK_IMPORTED_MODULE_0__.LoadingAnimation(cityViewSection);\r\n\r\n(0,_services_pub_sub__WEBPACK_IMPORTED_MODULE_1__.subscribe)(\"makeWeatherApiCall\", showLoaderOnScreen);\r\n(0,_services_pub_sub__WEBPACK_IMPORTED_MODULE_1__.subscribe)(\"newWeatherInfo\", processNewWeatherInfo);\r\n\r\nfunction processNewWeatherInfo(newWeatherInfo) {\r\n  loadingAnimation.getOutScreen();\r\n  console.log(newWeatherInfo);\r\n}\r\n\r\nfunction showLoaderOnScreen() {\r\n  loadingAnimation.showInScreen();\r\n}\n\n//# sourceURL=webpack://weather-app/./src/view/city-view.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _loader_loader_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../loader/loader.js */ \"./src/loader/loader.js\");\n/* harmony import */ var _services_pub_sub__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/pub-sub */ \"./src/services/pub-sub.js\");\n\r\n\r\n\r\nconst cityViewSection = document.querySelector(\".city-view\");\r\nconst loader = new _loader_loader_js__WEBPACK_IMPORTED_MODULE_0__.Loader(cityViewSection);\r\n\r\n(0,_services_pub_sub__WEBPACK_IMPORTED_MODULE_1__.subscribe)(\"makeWeatherApiCall\", showLoaderOnScreen);\r\n(0,_services_pub_sub__WEBPACK_IMPORTED_MODULE_1__.subscribe)(\"newWeatherInfo\", processNewWeatherInfo);\r\n\r\nfunction processNewWeatherInfo(newWeatherInfo) {\r\n  loader.getOutScreen();\r\n  console.log(newWeatherInfo);\r\n}\r\n\r\nfunction showLoaderOnScreen() {\r\n  loader.showInScreen();\r\n}\n\n//# sourceURL=webpack://weather-app/./src/view/city-view.js?");
 
 /***/ }),
 
@@ -156,7 +176,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ser
   \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../styles.css */ \"./src/styles.css\");\n/* harmony import */ var _services_pub_sub_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/pub-sub.js */ \"./src/services/pub-sub.js\");\n/* harmony import */ var _services_weather_api_caller_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/weather-api-caller.js */ \"./src/services/weather-api-caller.js\");\n/* harmony import */ var _city_view_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./city-view.js */ \"./src/view/city-view.js\");\n\r\n\r\n\r\n\r\n\r\nconst searchButton = document.querySelector(\".search-button\");\r\nconst cityInput = document.getElementById(\"city-input\");\r\n\r\ncityInput.addEventListener(\"keyup\", makeApiCallOnEnter);\r\nsearchButton.addEventListener(\"click\", makeApiCall);\r\n\r\nfunction makeApiCallOnEnter(event) {\r\n  const keyPressed = event.key;\r\n  if (keyPressed === \"Enter\") {\r\n    makeApiCall();\r\n  }\r\n}\r\n\r\nfunction makeApiCall() {\r\n  const cityName = cityInput.value;\r\n  if (cityName.length !== 0) {\r\n    (0,_services_pub_sub_js__WEBPACK_IMPORTED_MODULE_1__.emit)(\"makeWeatherApiCall\", cityName)\r\n  }\r\n}\n\n//# sourceURL=webpack://weather-app/./src/view/search-city-view.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   makeApiCall: () => (/* binding */ makeApiCall)\n/* harmony export */ });\n/* harmony import */ var _services_pub_sub_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/pub-sub.js */ \"./src/services/pub-sub.js\");\n\r\n;\r\n\r\nconst searchButton = document.querySelector(\".search-button\");\r\nconst cityInput = document.getElementById(\"city-input\");\r\n\r\ncityInput.addEventListener(\"keyup\", makeApiCallOnEnter);\r\nsearchButton.addEventListener(\"click\", makeApiCall);\r\n\r\nfunction makeApiCallOnEnter(event) {\r\n  const keyPressed = event.key;\r\n  if (keyPressed === \"Enter\") {\r\n    makeApiCall();\r\n  }\r\n}\r\n\r\nfunction makeApiCall(newCity) {\r\n  const cityName = newCity || cityInput.value;\r\n  if (cityName.length !== 0) {\r\n    (0,_services_pub_sub_js__WEBPACK_IMPORTED_MODULE_0__.emit)(\"makeWeatherApiCall\", cityName)\r\n  }\r\n}\n\n//# sourceURL=webpack://weather-app/./src/view/search-city-view.js?");
 
 /***/ })
 
@@ -237,7 +257,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/view/search-city-view.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/app.js");
 /******/ 	
 /******/ })()
 ;

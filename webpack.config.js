@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: "/src/view/search-city-view.js",
+  entry: "/src/app.js",
   mode: "development",
   output: {
     path: path.resolve(__dirname, 'dist'),
