@@ -2,7 +2,6 @@ export {CityWeatherInfo}
 
 class CityWeatherInfo {
 
-
   setLocation(locationObject) {
     this.location = locationObject;
   }

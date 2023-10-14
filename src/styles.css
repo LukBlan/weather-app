@@ -64,8 +64,15 @@ section {
   height: 50px;
   border-radius: 100%;
   border: 6px solid black;
-  border-top-color: snow;
+  border-top-color: white;
   animation: rotate 1s infinite;
+}
+
+.city-weather-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
 }
 
 @keyframes rotate {

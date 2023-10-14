@@ -1,5 +1,5 @@
 export {CityWeatherInfoBuilder}
-import {CityWeatherInfo} from "./city.js";
+import {CityWeatherInfo} from "./city-weather-info.js";
 
 class CityWeatherInfoBuilder {
   constructor() {
