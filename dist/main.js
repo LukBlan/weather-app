@@ -120,6 +120,36 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _vie
 
 /***/ }),
 
+/***/ "./src/city-weather/city-section-factory.js":
+/*!**************************************************!*\
+  !*** ./src/city-weather/city-section-factory.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   CitySectionFactory: () => (/* binding */ CitySectionFactory)\n/* harmony export */ });\n\r\n\r\nclass CitySectionFactory {\r\n  constructor() {\r\n  }\r\n\r\n  build(cityWeatherJson) {\r\n    const container = document.createElement(\"div\");\r\n    container.textContent = \"Esto es un ejemplo\"\r\n    console.log(cityWeatherJson)\r\n    return container;\r\n  }\r\n}\n\n//# sourceURL=webpack://weather-app/./src/city-weather/city-section-factory.js?");
+
+/***/ }),
+
+/***/ "./src/city-weather/city-weather-info-builder.js":
+/*!*******************************************************!*\
+  !*** ./src/city-weather/city-weather-info-builder.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   CityWeatherInfoBuilder: () => (/* binding */ CityWeatherInfoBuilder)\n/* harmony export */ });\n/* harmony import */ var _city_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./city.js */ \"./src/city-weather/city.js\");\n\r\n;\r\n\r\nclass CityWeatherInfoBuilder {\r\n  constructor() {\r\n    this.cityWeatherObject = new _city_js__WEBPACK_IMPORTED_MODULE_0__.CityWeatherInfo()\r\n  }\r\n\r\n  build(cityWeatherInfoJson) {\r\n    this.#setLocation(cityWeatherInfoJson.location)\r\n    this.#setTemperature(cityWeatherInfoJson.current);\r\n    return this.cityWeatherObject;\r\n  }\r\n\r\n  #setLocation(locationObject) {\r\n    const location = {}\r\n    location.name = locationObject.name;\r\n    location.region = locationObject.region;\r\n    location.country = locationObject.country;\r\n    this.cityWeatherObject.setLocation(location);\r\n  }\r\n\r\n  #setTemperature(currentStatusObject) {\r\n    const temperatureObject = {}\r\n    temperatureObject.celcius = currentStatusObject.temp_c;\r\n    temperatureObject.fahrenheit = currentStatusObject.temp_f;\r\n    temperatureObject.condition = currentStatusObject.condition.text;\r\n    temperatureObject.icon = currentStatusObject.condition.icon;\r\n    this.cityWeatherObject.setTemperature(temperatureObject)\r\n  }\r\n}\n\n//# sourceURL=webpack://weather-app/./src/city-weather/city-weather-info-builder.js?");
+
+/***/ }),
+
+/***/ "./src/city-weather/city.js":
+/*!**********************************!*\
+  !*** ./src/city-weather/city.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   CityWeatherInfo: () => (/* binding */ CityWeatherInfo)\n/* harmony export */ });\n\r\n\r\nclass CityWeatherInfo {\r\n\r\n\r\n  setLocation(locationObject) {\r\n    this.location = locationObject;\r\n  }\r\n\r\n  setTemperature(temperatureObject) {\r\n    this.temperature = temperatureObject;\r\n  }\r\n}\n\n//# sourceURL=webpack://weather-app/./src/city-weather/city.js?");
+
+/***/ }),
+
 /***/ "./src/loader/loader-factory.js":
 /*!**************************************!*\
   !*** ./src/loader/loader-factory.js ***!
@@ -166,7 +196,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _pub
   \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _loader_loader_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../loader/loader.js */ \"./src/loader/loader.js\");\n/* harmony import */ var _services_pub_sub__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/pub-sub */ \"./src/services/pub-sub.js\");\n\r\n\r\n\r\nconst cityViewSection = document.querySelector(\".city-view\");\r\nconst loader = new _loader_loader_js__WEBPACK_IMPORTED_MODULE_0__.Loader();\r\n\r\n(0,_services_pub_sub__WEBPACK_IMPORTED_MODULE_1__.subscribe)(\"makeWeatherApiCall\", showLoaderOnScreen);\r\n(0,_services_pub_sub__WEBPACK_IMPORTED_MODULE_1__.subscribe)(\"newWeatherInfo\", processNewWeatherInfo);\r\n\r\nfunction processNewWeatherInfo(newWeatherInfo) {\r\n  loader.getOutScreen(cityViewSection);\r\n  console.log(newWeatherInfo);\r\n}\r\n\r\nfunction showLoaderOnScreen() {\r\n  loader.showInScreen(cityViewSection);\r\n}\n\n//# sourceURL=webpack://weather-app/./src/view/city-view.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _loader_loader_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../loader/loader.js */ \"./src/loader/loader.js\");\n/* harmony import */ var _services_pub_sub__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/pub-sub */ \"./src/services/pub-sub.js\");\n/* harmony import */ var _city_weather_city_section_factory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../city-weather/city-section-factory */ \"./src/city-weather/city-section-factory.js\");\n/* harmony import */ var _city_weather_city_weather_info_builder_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../city-weather/city-weather-info-builder.js */ \"./src/city-weather/city-weather-info-builder.js\");\n\r\n\r\n\r\n\r\n\r\nconst cityViewSection = document.querySelector(\".city-weather-display\");\r\nconst loader = new _loader_loader_js__WEBPACK_IMPORTED_MODULE_0__.Loader();\r\nlet currentCityOnScreen = null;\r\n\r\n(0,_services_pub_sub__WEBPACK_IMPORTED_MODULE_1__.subscribe)(\"makeWeatherApiCall\", showLoaderOnScreen);\r\n(0,_services_pub_sub__WEBPACK_IMPORTED_MODULE_1__.subscribe)(\"newWeatherInfo\", processNewWeatherInfo);\r\n\r\nfunction processNewWeatherInfo(newWeatherInfo) {\r\n  const citySectionFactory = new _city_weather_city_section_factory__WEBPACK_IMPORTED_MODULE_2__.CitySectionFactory();\r\n  const cityWeatherInfoBuilder = new _city_weather_city_weather_info_builder_js__WEBPACK_IMPORTED_MODULE_3__.CityWeatherInfoBuilder();\r\n  const cityWeatherInfoObject = cityWeatherInfoBuilder.build(newWeatherInfo);\r\n  console.log(cityWeatherInfoObject);\r\n  //const newCityWeatherSection = citySectionFactory.build(cityWeatherInfoObject);\r\n  loader.getOutScreen(cityViewSection);\r\n  //cityViewSection.append(newCityWeatherSection);\r\n  //currentCityOnScreen = newCityWeatherSection;\r\n}\r\n\r\nfunction showLoaderOnScreen() {\r\n  loader.showInScreen(cityViewSection);\r\n}\n\n//# sourceURL=webpack://weather-app/./src/view/city-view.js?");
 
 /***/ }),
 
