@@ -1,5 +1,6 @@
 import {emit, subscribe} from "./pub-sub";
 
+// Receive from search-city-view when searching for new city
 subscribe("makeWeatherApiCall", makeWeatherApiCall);
 
 async function makeApiCall(cityName) {
@@ -14,10 +15,12 @@ async function makeApiCall(cityName) {
   return response.json();
 }
 
+// Make api call and process result
 function makeWeatherApiCall(cityName) {
   makeApiCall(cityName).then(sendNewCityInfo).catch(() => {console.log("error")})
 }
 
+// Send new weather info to city-view to render new info on screen
 function sendNewCityInfo(cityObject) {
   emit("newWeatherInfo", cityObject)
 }
