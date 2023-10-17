@@ -11,7 +11,7 @@ body {
 }
 
 nav {
-  background-color: #1C1627;
+  background-color: #343a40;
   grid-row: 1 / 1;
   grid-column: 1 / -1;
   display: flex;
@@ -19,7 +19,7 @@ nav {
 }
 
 .search-bar {
-  padding: 10px;
+  padding: 20px;
   display: flex;
 }
 
@@ -65,18 +65,42 @@ section {
   border-radius: 100%;
   border: 6px solid black;
   border-top-color: white;
+  justify-self: center;
   animation: rotate 1s infinite;
 }
 
 .city-weather-display {
-  display: flex;
-  justify-content: center;
+  display: grid;
   align-items: center;
   background-color: white;
+  grid-template-rows: 3fr 1fr;
 }
 
 @keyframes rotate {
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.info-section {
+  display: flex;
+  justify-content: center;
+}
+
+.extra-info-section {
+  height: 100%;
+  background-color: #343a40;
+  transform-origin: bottom;
+  animation: growAnimation 0.7s forwards;
+}
+
+@keyframes growAnimation {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scaleY(1);
   }
 }

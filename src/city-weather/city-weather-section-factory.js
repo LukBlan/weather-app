@@ -2,12 +2,16 @@ export {CityWeatherSectionFactory}
 
 class CityWeatherSectionFactory {
   build(cityWeatherInfoObject) {
-    const container = document.createElement("div");
+    const infoBox = document.createElement("div");
+    const extraInfoBox = document.createElement("div");
     const locationBox = this.#createLocationBox(cityWeatherInfoObject.location);
+    infoBox.classList.add("info-section")
+    extraInfoBox.classList.add("extra-info-section")
 
-    container.append(locationBox);
+    infoBox.append(locationBox);
     console.log(cityWeatherInfoObject)
-    return container;
+
+    return {info: infoBox, extraInfo: extraInfoBox};
   }
 
   #createLocationBox(locationObject) {

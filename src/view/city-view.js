@@ -11,12 +11,15 @@ subscribe("makeWeatherApiCall", showLoaderOnScreen);
 subscribe("newWeatherInfo", processNewWeatherInfo);
 
 function processNewWeatherInfo(newWeatherInfo) {
-  const citySectionFactory = new CityWeatherSectionFactory();
   const cityWeatherInfoBuilder = new CityWeatherInfoBuilder();
+  const citySectionFactory = new CityWeatherSectionFactory();
   const cityWeatherInfoObject = cityWeatherInfoBuilder.build(newWeatherInfo);
-  const newCityWeatherSection = citySectionFactory.build(cityWeatherInfoObject);
+  const weatherElements = citySectionFactory.build(cityWeatherInfoObject);
+
   loader.getOutScreen(cityViewSection);
-  cityViewSection.append(newCityWeatherSection);
+  cityViewSection.append(weatherElements.info);
+  cityViewSection.append(weatherElements.extraInfo);
+  //cityViewSection.append(weatherElements.extraInfo);
   currentCityWeatherInfo = cityWeatherInfoObject;
 }
 
