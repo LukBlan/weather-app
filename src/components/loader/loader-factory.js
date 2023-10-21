@@ -1,4 +1,5 @@
 export {createLoader}
+import "./loader.css"
 
 function createLoader() {
   const loader = document.createElement("div");

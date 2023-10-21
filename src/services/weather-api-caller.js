@@ -1,6 +1,6 @@
 import {emit, subscribe} from "./pub-sub";
 
-// Receive from search-city-view when searching for new city
+// Receive from search-city-view-view when searching for new city
 subscribe("makeWeatherApiCall", makeWeatherApiCall);
 
 async function makeApiCall(cityName) {

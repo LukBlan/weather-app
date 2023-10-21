@@ -1,4 +1,4 @@
-import {Loader} from "../loader/loader.js";
+import {Loader} from "../components/loader/loader.js";
 import {subscribe} from "../services/pub-sub";
 import {CityWeatherSectionFactory} from "../city-weather/city-weather-section-factory";
 import {CityWeatherInfoBuilder} from "../city-weather/city-weather-info-builder.js";
@@ -7,7 +7,7 @@ const cityViewSection = document.querySelector(".city-weather-display"); // Disp
 const loader = new Loader(); // Element with loading animation
 let currentCityWeatherInfo = null; // Last city queried by user
 
-// Receive from search-city-view when user search for new city
+// Receive from search-city-view-view when user search for new city
 subscribe("makeWeatherApiCall", showLoaderOnScreen);
 
 // Receive from weather-api-caller when info need's to be displayed on screen

@@ -1,5 +1,7 @@
 export {makeApiCall}
-import {emit} from "../services/pub-sub.js";
+import {emit} from "../../services/pub-sub.js";
+import "./input-city.css"
+import "./search-button.css"
 
 const searchButton = document.querySelector(".search-button");
 const cityInput = document.getElementById("city-input");
