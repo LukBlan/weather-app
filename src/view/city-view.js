@@ -1,7 +1,8 @@
 import {Loader} from "../components/loader/loader.js";
-import {subscribe} from "../services/pub-sub";
-import {CityWeatherSectionFactory} from "../city-weather/city-weather-section-factory";
+import {subscribe} from "../services/pub-sub.js";
+import {InfoSectionFactory} from "../components/info-section-view/info-section-factory.js";
 import {CityWeatherInfoBuilder} from "../city-weather/city-weather-info-builder.js";
+import {ExtraInfoSectionFactory} from "../components/extra-info-section-view/extra-info-section-factory.js";
 
 const cityViewSection = document.querySelector(".city-weather-display"); // Display city's weather info
 const loader = new Loader(); // Element with loading animation
@@ -16,18 +17,21 @@ subscribe("newWeatherInfo", processNewWeatherInfo);
 // Create 2 new dom elements based on weather info received and remove loader from screen
 function processNewWeatherInfo(newWeatherInfo) {
   const cityWeatherInfoBuilder = new CityWeatherInfoBuilder();
-  const citySectionFactory = new CityWeatherSectionFactory();
+  const infoSectionFactory = new InfoSectionFactory();
+  const extraInfoFactory = new ExtraInfoSectionFactory();
   const cityWeatherInfoObject = cityWeatherInfoBuilder.build(newWeatherInfo);
-  const newWeatherElements = citySectionFactory.build(cityWeatherInfoObject);
+  const newInfoSection = infoSectionFactory.build(cityWeatherInfoObject);
+  const newExtraInfoSection = extraInfoFactory.build(cityWeatherInfoObject);
 
+  console.log(cityWeatherInfoObject)
   loader.getOutScreen(cityViewSection);
   currentCityWeatherInfo = cityWeatherInfoObject;
-  render(newWeatherElements)
+  render(newInfoSection, newExtraInfoSection)
 }
 
-function render(newWeatherElements) {
-  cityViewSection.append(newWeatherElements.info);
-  cityViewSection.append(newWeatherElements.extraInfo);
+function render(newInfoSection, extraInfoSection) {
+  cityViewSection.append(newInfoSection);
+  cityViewSection.append(extraInfoSection);
 }
 
 // Start loader animation on Screen
