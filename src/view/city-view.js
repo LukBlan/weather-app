@@ -20,8 +20,8 @@ function processNewWeatherInfo(newWeatherInfo) {
   const infoSectionFactory = new InfoSectionFactory();
   const extraInfoFactory = new ExtraInfoSectionFactory();
   const cityWeatherInfoObject = cityWeatherInfoBuilder.build(newWeatherInfo);
-  const newInfoSection = infoSectionFactory.build(cityWeatherInfoObject);
-  const newExtraInfoSection = extraInfoFactory.build(cityWeatherInfoObject);
+  const newInfoSection = infoSectionFactory.build(cityWeatherInfoObject.info);
+  const newExtraInfoSection = extraInfoFactory.build(cityWeatherInfoObject.extraInfo);
 
   console.log(cityWeatherInfoObject)
   loader.getOutScreen(cityViewSection);

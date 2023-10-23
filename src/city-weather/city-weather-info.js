@@ -2,11 +2,11 @@ export {CityWeatherInfo}
 
 class CityWeatherInfo {
 
-  setLocation(locationObject) {
-    this.location = locationObject;
+  setInfo(infoObject) {
+    this.info = infoObject;
   }
 
-  setTemperature(temperatureObject) {
-    this.temperature = temperatureObject;
+  setExtraInfo(extraInfoObject) {
+    this.extraInfo = extraInfoObject;
   }
 }

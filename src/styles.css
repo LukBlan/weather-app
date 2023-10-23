@@ -43,13 +43,17 @@ section {
   height: 100%;
   background-color: #343a40;
   transform-origin: bottom;
-  animation: growAnimation 0.7s forwards;
+  animation: growAnimation 0.5s forwards;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  color: white;
+  text-align: center;
 }
 
 @keyframes growAnimation {
   0% {
     transform: scaleY(0);
-    opacity: 0;
   }
 
   100% {
