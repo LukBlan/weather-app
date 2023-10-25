@@ -19,7 +19,7 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/template/index.html",
+      template: "./src/templates/index.html",
       minify: {
         removeComments: true,
         removeAttributeQuotes: true,

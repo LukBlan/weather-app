@@ -2,7 +2,8 @@ export {DateChecker}
 
 class DateChecker {
   constructor(date) {
-    this.dateRecived = new Date(date);
+    const parts = date.split('-');
+    this.dateRecived = new Date(parts[0], parts[1] - 1, parts[2]);
     this.dateRecived.setHours(0,0,0,0);
   }
 
@@ -12,9 +13,9 @@ class DateChecker {
     const dayAfterTomorrow = new Date();
     let text = "";
 
-    today.setHours(0,0,0,0)
-    tomorrow.setHours(0,0,0,0)
-    dayAfterTomorrow.setHours(0,0,0,0)
+    today.setHours(0,0,0,0);
+    tomorrow.setHours(0,0,0,0);
+    dayAfterTomorrow.setHours(0,0,0,0);
 
     tomorrow.setDate(today.getDate() + 1);
     dayAfterTomorrow.setDate(tomorrow.getDate() + 1);
