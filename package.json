@@ -4,8 +4,8 @@
   "description": "Weather webpage that fetch data from cities",
   "main": "src/app.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.js --open",
-    "build": "webpack --config webpack.prod.js",
+    "start": "webpack-dev-server --config webpack-config/webpack.dev.js --open",
+    "build": "webpack-config --config webpack-config/webpack.prod.js",
     "subTree": "git subtree push --prefix dist origin gh-pages"
   },
   "keywords": [],
