@@ -9,7 +9,7 @@ class WeatherSectionWrapperFactory {
     const wrapper = document.createElement("div");
     const infoSectionFactory = new InfoSectionFactory();
     const extraInfoFactory = new ExtraInfoSectionFactory();
-    const newInfoSection = infoSectionFactory.build(cityWeatherInfoObject.info);
+    const newInfoSection = infoSectionFactory.build(cityWeatherInfoObject);
     const extraInfoSection = extraInfoFactory.build(cityWeatherInfoObject.extraInfo);
 
     wrapper.classList.add("weather-wrapper")
