@@ -4,12 +4,20 @@ class InfoSectionFactory {
   build(cityWeatherInfoObject) {
     const infoBox = document.createElement("div");
     const locationBox = this.#createLocationBox(cityWeatherInfoObject.location);
-    infoBox.classList.add("info-section")
+    const temperatureBox = this.#createTemperatureBox(cityWeatherInfoObject.temperature);
 
+    infoBox.classList.add("info-section")
     infoBox.append(locationBox);
-    console.log(cityWeatherInfoObject)
+    infoBox.append(temperatureBox)
 
     return infoBox;
+  }
+
+  #createTemperatureBox(temperature) {
+    const temperatureBox = document.createElement("p");
+    temperatureBox.innerText = temperature.temp_c;
+
+    return temperatureBox;
   }
 
   #createLocationBox(locationObject) {

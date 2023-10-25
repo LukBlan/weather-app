@@ -8,8 +8,33 @@ class CityWeatherInfoBuilder {
 
   build(cityWeatherInfoJson) {
     this.#setInfo(cityWeatherInfoJson);
+    this.#setForecastInfo(cityWeatherInfoJson.forecast)
     this.#setExtraInfo(cityWeatherInfoJson);
     return this.cityWeatherObject;
+  }
+
+  #setForecastInfo(forecastInfo) {
+    const todayInfo = this.#getDayInfo(forecastInfo.forecastday[0])
+    const tomorrowInfo = this.#getDayInfo(forecastInfo.forecastday[1])
+    const dayAfterTomorrow = this.#getDayInfo(forecastInfo.forecastday[2])
+    console.log(todayInfo)
+
+    this.cityWeatherObject.setTodayInfo(todayInfo);
+    this.cityWeatherObject.setTomorrowInfo(tomorrowInfo);
+    this.cityWeatherObject.setDayAfterTomorrow(dayAfterTomorrow);
+  }
+
+  #getDayInfo(todayWeatherInfo) {
+    const dayInfo = {}
+
+    dayInfo.maxtemp_c = todayWeatherInfo.day.maxtemp_c;
+    dayInfo.maxtemp_f = todayWeatherInfo.day.maxtemp_f;
+    dayInfo.mintemp_c = todayWeatherInfo.day.mintemp_c;
+    dayInfo.mintemp_f = todayWeatherInfo.day.mintemp_f;
+    dayInfo.text = todayWeatherInfo.day.condition.text;
+    dayInfo.icon = todayWeatherInfo.day.condition.icon;
+
+    return dayInfo;
   }
 
   #setInfo(cityWeatherInfoJson) {

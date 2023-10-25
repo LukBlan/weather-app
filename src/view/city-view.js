@@ -16,6 +16,7 @@ subscribe("newWeatherInfo", processNewWeatherInfo);
 
 // Create 2 new dom elements based on weather info received and remove loader from screen
 function processNewWeatherInfo(newWeatherInfo) {
+  console.log(newWeatherInfo)
   const cityWeatherInfoBuilder = new CityWeatherInfoBuilder();
   const infoSectionFactory = new InfoSectionFactory();
   const extraInfoFactory = new ExtraInfoSectionFactory();
@@ -23,7 +24,7 @@ function processNewWeatherInfo(newWeatherInfo) {
   const newInfoSection = infoSectionFactory.build(cityWeatherInfoObject.info);
   const newExtraInfoSection = extraInfoFactory.build(cityWeatherInfoObject.extraInfo);
 
-  console.log(cityWeatherInfoObject)
+
   loader.getOutScreen(cityViewSection);
   currentCityWeatherInfo = cityWeatherInfoObject;
   render(newInfoSection, newExtraInfoSection)
