@@ -1,19 +1,16 @@
 import {Loader} from "../components/loader/loader.js";
 import {subscribe} from "../services/pub-sub.js";
-import {CityWeatherInfoBuilder} from "../city-weather/city-weather-info-builder.js";
-import { WeatherSectionWrapperFactory } from "../components/wrapper-weather-sections/weather-section-wrapper-factory";
+import {CityWeatherInfoBuilder} from "./city-weather-info-builder.js";
+import { WeatherSectionWrapperFactory } from "../components/wrapper-weather-sections/weather-section-wrapper-factory.js";
 
-const cityViewSection = document.querySelector(".city-weather-display"); // Display city's weather info
-const loader = new Loader(); // Element with loading animation
-let currentCityWeatherInfo = null; // Last city queried by user
+const cityViewSection = document.querySelector(".city-weather-display");
+const loader = new Loader();
+let currentCityWeatherInfo = null;
 
-// Receive from search-city-view-view when user search for new city
 subscribe("makeWeatherApiCall", showLoaderOnScreen);
 
-// Receive from weather-api-caller when info need's to be displayed on screen
 subscribe("newWeatherInfo", processNewWeatherInfo);
 
-// Create 2 new dom elements based on weather info received and remove loader from screen
 function processNewWeatherInfo(newWeatherInfo) {
   console.log(newWeatherInfo)
   const cityWeatherInfoBuilder = new CityWeatherInfoBuilder();
@@ -26,7 +23,6 @@ function processNewWeatherInfo(newWeatherInfo) {
   cityViewSection.append(newExtraInfoSection);
 }
 
-// Start loader animation on Screen
 function showLoaderOnScreen() {
   cityViewSection.innerHTML = "";
   loader.showInScreen(cityViewSection);
