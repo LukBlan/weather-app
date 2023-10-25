@@ -29,6 +29,5 @@ section {
 
 .city-weather-display {
   display: grid;
-  align-items: center;
   background-color: white;
 }

@@ -1,4 +1,11 @@
 .info-section {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  text-align: center;
+  padding: 15px;
+  align-content: space-between;
+}
+
+.info-section .city-name {
+  font-size: 2rem;
+  font-family: cursive, sans-serif;
 }

@@ -29,6 +29,7 @@ class InfoSectionFactory {
     const locationCountry = document.createElement("p");
 
     locationName.innerText = locationObject.name;
+    locationName.classList.add("city-name");
     locationRegion.innerText = locationObject.region;
     locationCountry.innerText = locationObject.country;
 

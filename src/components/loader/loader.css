@@ -5,7 +5,9 @@
   border: 6px solid black;
   border-top-color: white;
   justify-self: center;
+  align-self: center;
   animation: rotate 1s infinite;
+
 }
 
 @keyframes rotate {

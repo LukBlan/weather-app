@@ -14,12 +14,13 @@ subscribe("newWeatherInfo", processNewWeatherInfo);
 function processNewWeatherInfo(newWeatherInfo) {
   console.log(newWeatherInfo)
   const cityWeatherInfoBuilder = new CityWeatherInfoBuilder();
-  const cityWeatherInfoObject = cityWeatherInfoBuilder.build(newWeatherInfo);
   const wrapperSectionFactory = new WeatherSectionWrapperFactory();
+
+  const cityWeatherInfoObject = cityWeatherInfoBuilder.build(newWeatherInfo);
   const newExtraInfoSection = wrapperSectionFactory.build(cityWeatherInfoObject);
 
-  loader.getOutScreen(cityViewSection);
   currentCityWeatherInfo = cityWeatherInfoObject;
+  loader.getOutScreen(cityViewSection);
   cityViewSection.append(newExtraInfoSection);
 }
 
