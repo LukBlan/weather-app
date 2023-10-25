@@ -31,7 +31,6 @@ section {
   display: grid;
   align-items: center;
   background-color: white;
-  grid-template-rows: 3fr 1fr;
 }
 
 .info-section {
