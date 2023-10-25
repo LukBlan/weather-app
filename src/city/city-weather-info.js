@@ -1,6 +1,9 @@
 export {CityWeatherInfo}
 
 class CityWeatherInfo {
+  constructor() {
+    this.forecastInfo = [];
+  }
 
   setInfo(infoObject) {
     this.info = infoObject;
@@ -10,16 +13,8 @@ class CityWeatherInfo {
     this.extraInfo = extraInfoObject;
   }
 
-  setTodayInfo(todayInfo) {
-    this.todayInfo = todayInfo;
-  }
-
-  setTomorrowInfo(tomorrowInfo) {
-    this.tomorrowInfo = tomorrowInfo;
-  }
-
-  setDayAfterTomorrow(dayAfterTomorrow) {
-    this.dayAfterTomorrow = dayAfterTomorrow;
+  addNewForecastInfo(forecastInfo) {
+    this.forecastInfo.push(forecastInfo);
   }
 
 }

@@ -14,27 +14,28 @@ class CityWeatherInfoBuilder {
   }
 
   #setForecastInfo(forecastInfo) {
-    const todayInfo = this.#getDayInfo(forecastInfo.forecastday[0])
-    const tomorrowInfo = this.#getDayInfo(forecastInfo.forecastday[1])
-    const dayAfterTomorrow = this.#getDayInfo(forecastInfo.forecastday[2])
-    console.log(todayInfo)
+    const todayInfo = this.#getForecastInfo(forecastInfo.forecastday[0])
+    const tomorrowInfo = this.#getForecastInfo(forecastInfo.forecastday[1])
+    const dayAfterTomorrow = this.#getForecastInfo(forecastInfo.forecastday[2])
 
-    this.cityWeatherObject.setTodayInfo(todayInfo);
-    this.cityWeatherObject.setTomorrowInfo(tomorrowInfo);
-    this.cityWeatherObject.setDayAfterTomorrow(dayAfterTomorrow);
+    this.cityWeatherObject.addNewForecastInfo(todayInfo);
+    this.cityWeatherObject.addNewForecastInfo(tomorrowInfo);
+    this.cityWeatherObject.addNewForecastInfo(dayAfterTomorrow);
+    console.log(this.cityWeatherObject)
   }
 
-  #getDayInfo(todayWeatherInfo) {
-    const dayInfo = {}
+  #getForecastInfo(forecastInfoObject) {
+    const forecastInfo = {}
 
-    dayInfo.maxtemp_c = todayWeatherInfo.day.maxtemp_c;
-    dayInfo.maxtemp_f = todayWeatherInfo.day.maxtemp_f;
-    dayInfo.mintemp_c = todayWeatherInfo.day.mintemp_c;
-    dayInfo.mintemp_f = todayWeatherInfo.day.mintemp_f;
-    dayInfo.text = todayWeatherInfo.day.condition.text;
-    dayInfo.icon = todayWeatherInfo.day.condition.icon;
+    forecastInfo.maxtemp_c = forecastInfoObject.day.maxtemp_c;
+    forecastInfo.maxtemp_f = forecastInfoObject.day.maxtemp_f;
+    forecastInfo.mintemp_c = forecastInfoObject.day.mintemp_c;
+    forecastInfo.mintemp_f = forecastInfoObject.day.mintemp_f;
+    forecastInfo.text = forecastInfoObject.day.condition.text;
+    forecastInfo.icon = forecastInfoObject.day.condition.icon;
+    forecastInfo.date = forecastInfoObject.date;
 
-    return dayInfo;
+    return forecastInfo;
   }
 
   #setInfo(cityWeatherInfoJson) {
