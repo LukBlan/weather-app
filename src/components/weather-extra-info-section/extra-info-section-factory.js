@@ -1,3 +1,4 @@
+import "./extra-info-section.css"
 export {ExtraInfoSectionFactory}
 
 class ExtraInfoSectionFactory {

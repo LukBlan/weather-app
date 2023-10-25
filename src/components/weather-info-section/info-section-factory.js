@@ -1,3 +1,5 @@
+import "./info-section.css"
+
 export {InfoSectionFactory}
 
 class InfoSectionFactory {

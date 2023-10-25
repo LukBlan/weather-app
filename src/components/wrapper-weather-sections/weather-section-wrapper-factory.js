@@ -1,5 +1,5 @@
-import { InfoSectionFactory } from "../info-section-view/info-section-factory";
-import { ExtraInfoSectionFactory } from "../extra-info-section-view/extra-info-section-factory";
+import { InfoSectionFactory } from "../weather-info-section/info-section-factory";
+import { ExtraInfoSectionFactory } from "../weather-extra-info-section/extra-info-section-factory";
 import "./weather-section-wrapper.css"
 
 export { WeatherSectionWrapperFactory }
