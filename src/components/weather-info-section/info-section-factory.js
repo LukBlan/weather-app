@@ -20,7 +20,7 @@ class InfoSectionFactory {
 
   #createTemperatureBox(temperature) {
     const temperatureBox = document.createElement("p");
-    temperatureBox.innerText = temperature.temp_c + "°";
+    temperatureBox.innerText = temperature.temp_c;
     temperatureBox.classList.add("temperature")
     return temperatureBox;
   }

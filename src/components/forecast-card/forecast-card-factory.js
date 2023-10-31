@@ -20,7 +20,7 @@ function createMinMaxInfoBox(forecastInfoObject) {
   const container = document.createElement("div");
   const minMaxBox = document.createElement("p");
 
-  minMaxBox.innerText = `${forecastInfoObject.mintemp_c}° / ${forecastInfoObject.maxtemp_c}°C`
+  minMaxBox.innerText = `${forecastInfoObject.mintemp_c} / ${forecastInfoObject.maxtemp_c}`
   container.append(minMaxBox);
 
   return container;

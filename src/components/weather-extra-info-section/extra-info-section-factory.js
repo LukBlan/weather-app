@@ -4,12 +4,12 @@ export {ExtraInfoSectionFactory}
 class ExtraInfoSectionFactory {
   build(extraInfoObject) {
     const extraInfoBox = document.createElement("div");
-    const windSpeedInfo = this.#createParagraph(extraInfoObject,"Wind", "wind_mph", "km/hr");
-    const windDirInfo = this.#createParagraph(extraInfoObject,"Wind Direction", "wind_dir", "");
-    const windPressureInfo = this.#createParagraph(extraInfoObject, "Pressure", "pressure_mb", "hPa");
-    const windPrecipitationInfo = this.#createParagraph(extraInfoObject, "Precipitation", "precip_mm", "mm");
-    const windHumidityInfo = this.#createParagraph(extraInfoObject, "Humidity", "humidity", "%");
-    const windCloudInfo = this.#createParagraph(extraInfoObject,"Visibility", "vis_km", "km");
+    const windSpeedInfo = this.#createParagraph(extraInfoObject,"Wind", "wind_kph");
+    const windDirInfo = this.#createParagraph(extraInfoObject,"Wind Direction", "wind_dir");
+    const windPressureInfo = this.#createParagraph(extraInfoObject, "Pressure", "pressure_mb");
+    const windPrecipitationInfo = this.#createParagraph(extraInfoObject, "Precipitation", "precip_mm");
+    const windHumidityInfo = this.#createParagraph(extraInfoObject, "Humidity", "humidity");
+    const windCloudInfo = this.#createParagraph(extraInfoObject,"Visibility", "vis_km");
 
     extraInfoBox.classList.add("extra-info-section")
     extraInfoBox.append(windSpeedInfo)
@@ -21,13 +21,13 @@ class ExtraInfoSectionFactory {
     return extraInfoBox;
   }
 
-  #createParagraph(weatherObject, word, fieldName, unit) {
+  #createParagraph(weatherObject, word, fieldName) {
     const container = document.createElement("div");
     const title = document.createElement("p");
     const paragraph = document.createElement("p");
 
     title.innerText = word;
-    paragraph.innerText = weatherObject[fieldName] + " " + unit;
+    paragraph.innerText = weatherObject[fieldName];
 
     container.append(title);
     container.append(paragraph);
