@@ -21,7 +21,6 @@ class CityWeatherInfoBuilder {
     this.cityWeatherObject.addNewForecastInfo(todayInfo);
     this.cityWeatherObject.addNewForecastInfo(tomorrowInfo);
     this.cityWeatherObject.addNewForecastInfo(dayAfterTomorrow);
-    console.log(this.cityWeatherObject)
   }
 
   #getForecastInfo(forecastInfoObject) {

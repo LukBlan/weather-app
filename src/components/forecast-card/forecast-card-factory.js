@@ -9,7 +9,6 @@ function createForecastCard(forecastInfoObject) {
   const weatherImg = createWeatherImage(forecastInfoObject);
   const minAndMaxWeatherInfo = createMinMaxInfoBox(forecastInfoObject);
 
-  console.log(forecastInfoObject)
   container.classList.add("forecast-card");
   container.append(correspondingDayText);
   container.append(weatherImg);

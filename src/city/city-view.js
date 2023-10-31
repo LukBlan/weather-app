@@ -8,11 +8,9 @@ const loader = new Loader();
 let currentCityWeatherInfo = null;
 
 subscribe("makeWeatherApiCall", showLoaderOnScreen);
-
 subscribe("newWeatherInfo", processNewWeatherInfo);
 
 function processNewWeatherInfo(newWeatherInfo) {
-  console.log(newWeatherInfo)
   const cityWeatherInfoBuilder = new CityWeatherInfoBuilder();
   const wrapperSectionFactory = new WeatherSectionWrapperFactory();
 

@@ -1,5 +1,7 @@
 import {emit, subscribe} from "./pub-sub";
 
+let lastCityWeatherInfo = null;
+
 // Receive from search-city-bar-view when searching for new city
 subscribe("makeWeatherApiCall", makeWeatherApiCall);
 
@@ -12,8 +14,9 @@ async function makeApiCall(cityName) {
   if (!response.ok) {
     throw new Error("City Not Found")
   }
-
-  return JSON.parse(text);
+  lastCityWeatherInfo = JSON.parse(text)
+  console.log(lastCityWeatherInfo)
+  return lastCityWeatherInfo;
 }
 
 // Make api call and process result
@@ -28,4 +31,5 @@ function sendNewCityInfo(cityObject) {
 
 function notifyError() {
   emit("cityNotfoundError", null)
+  emit("newWeatherInfo", lastCityWeatherInfo)
 }
