@@ -3,15 +3,29 @@ import "./forecast-card.css"
 
 export {createForecastCard}
 
-
 function createForecastCard(forecastInfoObject) {
   const container = document.createElement("div");
   const correspondingDayText = createCorrespondingDayText(forecastInfoObject.date);
   const weatherImg = createWeatherImage(forecastInfoObject);
+  const minAndMaxWeatherInfo = createMinMaxInfoBox(forecastInfoObject);
 
+  console.log(forecastInfoObject)
   container.classList.add("forecast-card");
   container.append(correspondingDayText);
   container.append(weatherImg);
+  container.append(minAndMaxWeatherInfo)
+  return container;
+}
+
+function createMinMaxInfoBox(forecastInfoObject) {
+  const container = document.createElement("div");
+  const minBox = document.createElement("p");
+  const maxBox = document.createElement("p")
+
+  minBox.innerText = `Min: ${forecastInfoObject.mintemp_c}°`
+  maxBox.innerText = `Max: ${forecastInfoObject.maxtemp_c}°`
+  container.append(minBox);
+  container.append(maxBox)
 
   return container;
 }

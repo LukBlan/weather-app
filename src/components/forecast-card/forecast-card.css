@@ -1,9 +1,17 @@
 .forecast-card-list {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 5%;
 }
 
 .forecast-card {
+  font-weight: bold;
+  animation: showOnScreen 0.5s forwards;
+  opacity: 0;
+}
 
+@keyframes showOnScreen {
+  100% {
+    opacity: 1;
+  }
 }
