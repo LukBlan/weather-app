@@ -7,7 +7,7 @@ class ExtraInfoSectionFactory {
     const windSpeedInfo = this.#createParagraph(extraInfoObject,"Wind", "wind_mph", "km/hr");
     const windDirInfo = this.#createParagraph(extraInfoObject,"Wind Direction", "wind_dir", "");
     const windPressureInfo = this.#createParagraph(extraInfoObject, "Pressure", "pressure_mb", "hPa");
-    const windPrecipitationInfo = this.#createParagraph(extraInfoObject, "Precipitation", "precip_mm", "%");
+    const windPrecipitationInfo = this.#createParagraph(extraInfoObject, "Precipitation", "precip_mm", "mm");
     const windHumidityInfo = this.#createParagraph(extraInfoObject, "Humidity", "humidity", "%");
     const windCloudInfo = this.#createParagraph(extraInfoObject,"Visibility", "vis_km", "km");
 

@@ -1,13 +1,23 @@
-export {makeApiCall}
-import {emit} from "../../services/pub-sub.js";
+import {createErrorMessageBox} from "../error-message-box/error-message-box";
+import {emit, subscribe} from "../../services/pub-sub.js";
 import "./input-city.css"
 import "./search-button.css"
 
+export {makeApiCall}
+
+const searchBar = document.querySelector(".search-bar");
 const searchButton = document.querySelector(".search-button");
 const cityInput = document.getElementById("city-input");
 
 cityInput.addEventListener("keyup", makeApiCallOnEnter);
 searchButton.addEventListener("click", makeApiCall);
+
+subscribe("cityNotfoundError", displayErrorOnSearchBar)
+
+function displayErrorOnSearchBar() {
+  const errorMessage = createErrorMessageBox("City Not Found");
+  searchBar.append(errorMessage)
+}
 
 function makeApiCallOnEnter(event) {
   const keyPressed = event.key;

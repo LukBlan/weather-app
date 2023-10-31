@@ -9,3 +9,8 @@
   font-size: 2rem;
   font-family: cursive, sans-serif;
 }
+
+.temperature {
+  font-weight: bold;
+  font-size: 2rem;
+}

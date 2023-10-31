@@ -18,10 +18,14 @@ async function makeApiCall(cityName) {
 
 // Make api call and process result
 function makeWeatherApiCall(cityName) {
-  makeApiCall(cityName).then(sendNewCityInfo).catch(() => {console.log("error")})
+  makeApiCall(cityName).then(sendNewCityInfo).catch(notifyError)
 }
 
 // Send new weather info to city-view to render new info on screen
 function sendNewCityInfo(cityObject) {
   emit("newWeatherInfo", cityObject)
+}
+
+function notifyError() {
+  emit("cityNotfoundError", null)
 }
