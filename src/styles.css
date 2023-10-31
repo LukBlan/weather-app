@@ -19,6 +19,7 @@ nav {
 }
 
 .search-bar {
+  position: relative;
   padding: 20px;
   display: flex;
 }
