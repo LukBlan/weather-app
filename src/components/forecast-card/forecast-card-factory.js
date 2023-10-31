@@ -18,13 +18,10 @@ function createForecastCard(forecastInfoObject) {
 
 function createMinMaxInfoBox(forecastInfoObject) {
   const container = document.createElement("div");
-  const minBox = document.createElement("p");
-  const maxBox = document.createElement("p")
+  const minMaxBox = document.createElement("p");
 
-  minBox.innerText = `Min: ${forecastInfoObject.mintemp_c}°`
-  maxBox.innerText = `Max: ${forecastInfoObject.maxtemp_c}°`
-  container.append(minBox);
-  container.append(maxBox)
+  minMaxBox.innerText = `${forecastInfoObject.mintemp_c}° / ${forecastInfoObject.maxtemp_c}°C`
+  container.append(minMaxBox);
 
   return container;
 }

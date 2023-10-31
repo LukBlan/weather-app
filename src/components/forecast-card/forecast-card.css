@@ -5,9 +5,17 @@
 }
 
 .forecast-card {
-  font-weight: bold;
   animation: showOnScreen 0.5s forwards;
   opacity: 0;
+}
+
+.forecast-card > p:first-child {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.forecast-card > div:last-child {
+  font-family: monospace, sans-serif;
 }
 
 @keyframes showOnScreen {
