@@ -5,8 +5,18 @@
 }
 
 .forecast-card {
-  animation: showOnScreen 0.5s forwards;
+  animation: showFromBottom 0.5s forwards;
   opacity: 0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  padding: 10px;
+  cursor: pointer;
+  transform: translateY(-200%);
+  transition: all 0.2s;
+}
+
+.forecast-card:hover {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  transform: scale(1.04) translateZ(10px);
 }
 
 .forecast-card > p:first-child {
@@ -18,8 +28,9 @@
   font-family: monospace, sans-serif;
 }
 
-@keyframes showOnScreen {
+@keyframes showFromBottom {
   100% {
+    transform: translateY(0);
     opacity: 1;
   }
 }
