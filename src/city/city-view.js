@@ -5,7 +5,6 @@ import { WeatherSectionWrapperFactory } from "../components/wrapper-weather-sect
 
 const cityViewSection = document.querySelector(".city-weather-display");
 const loader = new Loader();
-let currentCityWeatherInfo = null;
 
 subscribe("makeWeatherApiCall", showLoaderOnScreen);
 subscribe("newWeatherInfo", processNewWeatherInfo);
@@ -15,11 +14,10 @@ function processNewWeatherInfo(newWeatherInfo) {
   const wrapperSectionFactory = new WeatherSectionWrapperFactory();
 
   const cityWeatherInfoObject = cityWeatherInfoBuilder.build(newWeatherInfo);
-  const newExtraInfoSection = wrapperSectionFactory.build(cityWeatherInfoObject);
+  const weatherSection = wrapperSectionFactory.build(cityWeatherInfoObject);
 
-  currentCityWeatherInfo = cityWeatherInfoObject;
   loader.getOutScreen(cityViewSection);
-  cityViewSection.append(newExtraInfoSection);
+  cityViewSection.append(weatherSection);
 }
 
 function showLoaderOnScreen() {
