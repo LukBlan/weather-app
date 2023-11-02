@@ -1,0 +1,29 @@
+.temperature-toggle {
+  position: relative;
+  background-color: white;
+  width: 40px;
+  height: 20px;
+  appearance: none;
+  border-radius: 15px;
+}
+
+.temperature-toggle::after {
+  position: absolute;
+  content: "C";
+  text-align: center;
+  line-height: 20px;
+  left: 2%;
+  top: 2%;
+  width: 18px;
+  height: 18px;
+  background-color: #343a40;
+  color: white;
+  border-radius: 50%;
+  transition: all 0.5s;
+  box-shadow: 0px 1px 0px black;
+}
+
+.temperature-toggle:checked::after {
+  left: 51%;
+  content: "F";
+}
