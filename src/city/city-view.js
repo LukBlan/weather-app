@@ -5,16 +5,21 @@ import { WeatherSectionWrapperFactory } from "../components/wrapper-weather-sect
 
 const cityViewSection = document.querySelector(".city-weather-display");
 const loader = new Loader();
+let currentWrapperSection = null;
 
 subscribe("makeWeatherApiCall", showLoaderOnScreen);
 subscribe("newWeatherInfo", processNewWeatherInfo);
+subscribe("renderLastQueriedCity", renderCurrentWrapper);
 
 function processNewWeatherInfo(newWeatherInfo) {
   const cityWeatherInfoBuilder = new CityWeatherInfoBuilder();
-  const wrapperSectionFactory = new WeatherSectionWrapperFactory();
-
   const cityWeatherInfoObject = cityWeatherInfoBuilder.build(newWeatherInfo);
-  const weatherSection = wrapperSectionFactory.build(cityWeatherInfoObject);
+  currentWrapperSection = new WeatherSectionWrapperFactory(cityWeatherInfoObject);
+  renderCurrentWrapper();
+}
+
+function renderCurrentWrapper() {
+  const weatherSection = currentWrapperSection.getWrapper();
 
   loader.getOutScreen(cityViewSection);
   cityViewSection.append(weatherSection);

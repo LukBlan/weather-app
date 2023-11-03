@@ -5,7 +5,15 @@ import "./weather-section-wrapper.css"
 export { WeatherSectionWrapperFactory }
 
 class WeatherSectionWrapperFactory {
-  build(cityWeatherInfoObject) {
+  constructor(cityWeatherInfoObject) {
+    this.wrapper = this.#build(cityWeatherInfoObject)
+  }
+
+  getWrapper() {
+    return this.wrapper;
+  }
+
+  #build(cityWeatherInfoObject) {
     const wrapper = document.createElement("div");
     const infoSectionFactory = new InfoSectionFactory();
     const extraInfoFactory = new ExtraInfoSectionFactory();
