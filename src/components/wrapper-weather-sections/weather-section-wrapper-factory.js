@@ -6,6 +6,7 @@ export { WeatherSectionWrapperFactory }
 
 class WeatherSectionWrapperFactory {
   constructor(cityWeatherInfoObject) {
+    this.infoSectionFactory = new InfoSectionFactory(cityWeatherInfoObject);
     this.wrapper = this.#build(cityWeatherInfoObject)
   }
 
@@ -13,11 +14,14 @@ class WeatherSectionWrapperFactory {
     return this.wrapper;
   }
 
+  switchTemperature() {
+    this.infoSectionFactory.switchTemperature();
+  }
+
   #build(cityWeatherInfoObject) {
     const wrapper = document.createElement("div");
-    const infoSectionFactory = new InfoSectionFactory();
     const extraInfoFactory = new ExtraInfoSectionFactory();
-    const newInfoSection = infoSectionFactory.build(cityWeatherInfoObject);
+    const newInfoSection =  this.infoSectionFactory.getInfoSection();
     const extraInfoSection = extraInfoFactory.build(cityWeatherInfoObject.extraInfo);
 
     wrapper.classList.add("weather-wrapper")

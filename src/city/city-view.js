@@ -10,12 +10,17 @@ let currentWrapperSection = null;
 subscribe("makeWeatherApiCall", showLoaderOnScreen);
 subscribe("newWeatherInfo", processNewWeatherInfo);
 subscribe("renderLastQueriedCity", renderCurrentWrapper);
+subscribe("switchTemperature", toggleTemperature)
 
 function processNewWeatherInfo(newWeatherInfo) {
   const cityWeatherInfoBuilder = new CityWeatherInfoBuilder();
   const cityWeatherInfoObject = cityWeatherInfoBuilder.build(newWeatherInfo);
   currentWrapperSection = new WeatherSectionWrapperFactory(cityWeatherInfoObject);
   renderCurrentWrapper();
+}
+
+function toggleTemperature() {
+  currentWrapperSection.switchTemperature()
 }
 
 function renderCurrentWrapper() {

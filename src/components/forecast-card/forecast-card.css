@@ -1,10 +1,11 @@
 .forecast-card-list {
-  display: flex;
-  justify-content: center;
+  display: grid;
   gap: 5%;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .forecast-card {
+  font-weight: bold;
   animation: showFromBottom 0.5s forwards;
   opacity: 0;
   box-shadow: 0 2px 3px rgba(0,0,0,0.5);
@@ -12,6 +13,8 @@
   cursor: pointer;
   transform: translateY(-200%);
   transition: all 0.2s;
+  background-color: brown;
+  color: white;
 }
 
 .forecast-card:hover {
@@ -21,7 +24,6 @@
 
 .forecast-card > p:first-child {
   font-size: 1.2rem;
-  font-weight: bold;
 }
 
 .forecast-card > div:last-child {
