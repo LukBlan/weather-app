@@ -1,5 +1,4 @@
-export {Loader}
-import {createLoader} from "./loader-factory.js";
+import { createLoader } from './loader-factory';
 
 class Loader {
   constructor() {
@@ -14,3 +13,5 @@ class Loader {
     parentElement.removeChild(this.loader);
   }
 }
+
+export { Loader };

@@ -1,5 +1,3 @@
-export {CityWeatherInfo}
-
 class CityWeatherInfo {
   constructor() {
     this.forecastInfo = [];
@@ -16,5 +14,6 @@ class CityWeatherInfo {
   addNewForecastInfo(forecastInfo) {
     this.forecastInfo.push(forecastInfo);
   }
-
 }
+
+export { CityWeatherInfo };

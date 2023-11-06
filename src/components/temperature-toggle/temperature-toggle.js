@@ -1,10 +1,10 @@
-import "./temperature-toggle.css"
-import {emit} from "../../services/pub-sub";
+import './temperature-toggle.css';
+import { emit } from '../../services/pub-sub';
 
-const toggle = document.querySelector(".temperature-toggle");
-
-toggle.addEventListener("input", toggleTemperature);
+const toggle = document.querySelector('.temperature-toggle');
 
 function toggleTemperature() {
-  emit("switchTemperature", null)
+  emit('switchTemperature', null);
 }
+
+toggle.addEventListener('input', toggleTemperature);

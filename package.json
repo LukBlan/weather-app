@@ -4,8 +4,8 @@
   "description": "Weather webpage that fetch data from cities",
   "main": "src/app.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack-config/webpack.dev.js --open",
-    "build": "webpack --config webpack-config/webpack.prod.js",
+    "start": "webpack-dev-server --config config/webpack.dev.js --open",
+    "build": "webpack --config config/webpack.prod.js",
     "subTree": "git subtree push --prefix dist origin gh-pages"
   },
   "keywords": [],
@@ -15,6 +15,9 @@
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^5.0.1",
+    "eslint": "^8.53.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.0",
     "html-webpack-plugin": "^5.5.3",
     "mini-css-extract-plugin": "^2.7.6",
     "style-loader": "^3.3.3",

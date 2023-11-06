@@ -1,6 +1,4 @@
-export {subscribe, emit}
-
-const events = {}
+const events = {};
 
 function subscribe(eventName, handler) {
   if (events[eventName] === undefined) {
@@ -12,5 +10,7 @@ function subscribe(eventName, handler) {
 
 function emit(eventName, data) {
   const event = events[eventName];
-  event.forEach(handler => handler(data));
+  event.forEach((handler) => handler(data));
 }
+
+export { subscribe, emit };

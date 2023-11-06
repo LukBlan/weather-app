@@ -1,5 +1,3 @@
-export {TemperatureSwitcher}
-
 class TemperatureSwitcher {
   constructor() {
     this.temperature = null;
@@ -8,11 +6,11 @@ class TemperatureSwitcher {
   }
 
   switch() {
-    this.position = (this.position + 1) % 2
-    this.temperature.reference.innerText = this.temperature.values[this.position]
-    this.forecastList.forEach(objectCard => {
-      objectCard.reference.innerText = objectCard.values[this.position]
-    })
+    this.position = (this.position + 1) % 2;
+    this.temperature.reference.innerText = this.temperature.values[this.position];
+    this.forecastList.forEach((objectCard) => {
+      objectCard.reference.innerText = objectCard.values[this.position];
+    });
   }
 
   setTemperature(object) {
@@ -23,3 +21,5 @@ class TemperatureSwitcher {
     this.forecastList.push(object);
   }
 }
+
+export { TemperatureSwitcher };

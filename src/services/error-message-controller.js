@@ -1,14 +1,11 @@
-import {subscribe} from "./pub-sub";
-import {createErrorMessageBox} from "../components/error-message-box/error-message-box";
+import { subscribe } from './pub-sub';
+import { createErrorMessageBox } from '../components/error-message-box/error-message-box';
 
-const searchBar = document.querySelector(".search-bar");
+const searchBar = document.querySelector('.search-bar');
 let currentErrorMessage = null;
 
-subscribe("cityNotfoundError", displayErrorOnSearchBar);
-subscribe("deleteErrorMessageIfAny", deleteErrorMessageIfAny);
-
 function displayErrorOnSearchBar() {
-  const errorMessage = createErrorMessageBox("City Not Found");
+  const errorMessage = createErrorMessageBox('City Not Found');
   currentErrorMessage = errorMessage;
   searchBar.append(errorMessage);
 }
@@ -19,3 +16,6 @@ function deleteErrorMessageIfAny() {
     currentErrorMessage = null;
   }
 }
+
+subscribe('cityNotfoundError', displayErrorOnSearchBar);
+subscribe('deleteErrorMessageIfAny', deleteErrorMessageIfAny);
